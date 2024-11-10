@@ -1,0 +1,140 @@
+<Main_Screen@Screen>:
+    id: main_screen
+    name: 'main_screen'
+    MDScreen:
+        MDBoxLayout:
+            orientation:"vertical"
+            padding:dp(10)
+            canvas.before:
+                Color:
+                    rgba: 236/255,252/255,240/255,1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            MDTopAppBar:
+                id: toolbar
+                anchor_title:"left"
+                md_bg_color:"#ecfcf0"
+                specific_text_color:"#757575"
+                title:"YUGO HOUSE"
+                font_style_title : "Fonts/Md_Gothic11.ttf"
+                left_action_items:[["menu", lambda x: drawer.set_state("open") ]]
+                elevation:0
+
+
+            MDBoxLayout:
+                size_hint_y:.25
+                padding:"25dp"
+                MDBoxLayout:
+                    orientation:"vertical"
+                    Image:
+                        source:"Vectors/Yugo.png"
+                        opacity: .7
+
+
+            MDGridLayout:
+                size_hint_y:.75
+                cols:1
+                padding:dp(50),dp(10),dp(50),dp(10)
+                spacing:dp(20)
+                radius:dp(10)
+                ElementsCard:
+                    text:"spend"
+                    sub_text:"Use Amount"
+                    elevation:0.5
+                    on_release:
+                        app.root.current = 'spend_amount'
+                        app.root.transition.direction = 'left'
+                ElementsCard:
+                    text:"funds"
+                    sub_text:"remain"
+                    elevation:0.5
+                    on_release:
+                        app.root.current = 'fee_fine'
+                        app.root.transition.direction = 'left'
+                    
+                ElementsCard:
+                    text:"details"
+                    sub_text:"Use Amount"
+                    elevation:0.5
+                    on_release:
+                        app.root.current = 'detail_screen'
+                        app.root.transition.direction = 'left'
+
+    MDNavigationDrawer:
+        id:drawer
+        md_bg_color:"#ecfcf0"
+        MDNavigationDrawerMenu:
+            MDNavigationDrawerHeader:
+                title:"YUGO HOUSE"
+                font_name : "Fonts/Chopsic.otf"
+                text:" RAWALPINDI"
+                font_name_text : "Fonts/Md_Gothic11.ttf"
+                padding:"12dp",0,0,"15dp"
+                spacing:dp(10)
+                title_color: "#0C3B2E"
+                text_color: "#0C3B2E"
+            MDNavigationDrawerLabel:
+                text:"Menu"
+                text_color: "#0C3B2E"
+            MDSeparator:
+            DrawerItems:
+                icon:"account-edit-outline"
+                text: "Edit"
+                on_release:
+                    app.root.current = 'edit_options'
+                    app.root.transition.direction = 'left'
+                text_color: "#0C3B2E"
+                icon_color: "#0C3B2E"
+            DrawerItems:
+                icon:"theme-light-dark"
+                text: "Theme"
+                text_color: "#0C3B2E"
+                icon_color: "#0C3B2E"
+            DrawerItems:
+                icon:"cog-outline"
+                text: "Settings"
+                text_color: "#0C3B2E"
+                icon_color: "#0C3B2E"
+            MDSeparator:
+            DrawerItems:
+                icon:"information-outline"
+                text: "Info"
+                text_color: "#0C3B2E"
+                icon_color: "#0C3B2E"
+            DrawerItems:
+                icon:"information-outline"
+                text: "Developer Info"
+                text_color: "#0C3B2E"
+                icon_color: "#0C3B2E"
+                
+<DrawerItems@MDNavigationDrawerItem>:
+    md_bg_color: 236/255,252/255,240/255,1
+    text_color: "#0C3B2E"
+    icon_color: "#0C3B2E"
+
+
+<ElementsCard@MDCard>:
+    md_bg_color:  "#ecfcf0"      
+    orientation:"vertical"
+    ripple_behaviour:True
+    size_hint_y:None
+    padding:dp(50)
+    radius:dp(25)
+    height:dp(100)
+    orientation: "vertical"
+    text:""
+    subtext:""
+
+    MDLabel:
+        halign:"center"
+        text:root.text
+        font_name: "Fonts/Cocogoose-Regular.ttf"
+        theme_text_color: "Custom"
+    MDLabel:
+        halign:"center"
+        subtext:root.subtext
+        
+        theme_text_color: "Custom"
+

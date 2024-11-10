@@ -1,0 +1,42 @@
+<Fee_Editing@Screen>:
+    id: feeediting
+    name: 'feeediting'
+    md_bg_color:"#FBFFF5"
+    MDBoxLayout:
+        orientation:"vertical"
+        canvas.before:
+            Color:
+                rgba: 236/255,252/255,240/255,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        MDTopAppBar:
+            anchor_title:"left"
+            title:"Edit Fees"
+            left_action_items:[["arrow-left", lambda x: app.edit_options()]]
+            md_bg_color:"#ecfcf0"
+            specific_text_color:"#757575"
+            elevation:0
+
+        MDBoxLayout:
+            orientation:"vertical"
+            padding:"20dp","5dp","20dp","20dp"
+            spacing:"20dp"  
+            size_hint_y:None
+            height: self.minimum_height
+            MDTextField:
+                id: fee_amount
+                hint_text: "Fee Amount"
+                icon_left:"rename-box-outline"
+                input_filter: 'int'
+                multiline:False
+                mode: "rectangle"
+
+            MDFillRoundFlatButton:
+                pos_hint: {"center_x": 0.5, "center_y": 0.4}
+                font_size: "16dp"
+                text: "Save"
+                md_bg_color: "#1a434e"
+                on_release: app.addedfees()
+                elevation: 0
+        Widget:

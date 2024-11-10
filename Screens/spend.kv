@@ -1,0 +1,50 @@
+<Spend_Amounts@Screen>:
+    id: spend_amount
+    name: 'spend_amount'
+    MDBoxLayout:
+        orientation:"vertical"
+        canvas.before:
+            Color:
+                rgba: 236/255,252/255,240/255,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        MDTopAppBar:
+            anchor_title:"left"
+            title:"Add New Member"
+            left_action_items:[["arrow-left", lambda x: app.main_menu()]]
+            md_bg_color:"#ecfcf0"
+            specific_text_color:"#757575"
+            elevation:0
+        MDBoxLayout:
+            orientation:"vertical"
+            spacing:"20dp"
+            padding:"20dp","5dp","20dp","20dp"
+            size_hint_y: None
+            height: self.minimum_height
+            MDTextField:
+                id: spend_rupees
+                hint_text: "Rupees"
+                icon_left:"rename-box-outline"
+                multiline:False
+                input_filter: 'int'
+                mode: "rectangle"
+                size_hint_y: None
+                height:dp(200)
+
+            MDTextField:
+                id: buy_what
+                hint_text: "Buy What?"
+                multiline:False
+                size_hint_y: None
+                height: dp(150)
+                font_size: '18sp'
+
+            MDFillRoundFlatButton:
+                pos_hint: {"center_x": 0.5, "center_y": 0.4}
+                font_size: "16dp"
+                text: "Spend"
+                md_bg_color: "#1a434e"
+                on_release: app.expendituress()
+                elevation: 0
+        Widget:

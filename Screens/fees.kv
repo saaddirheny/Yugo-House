@@ -1,0 +1,41 @@
+<Fees@Screen>:
+    id: add_fee
+    name: 'add_fee'
+    MDBoxLayout:
+        orientation:"vertical"
+        canvas.before:
+            Color:
+                rgba: 236/255,252/255,240/255,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        MDTopAppBar:
+            anchor_title:"left"
+            title:"Fees"
+            left_action_items:[["arrow-left", lambda x: app.funds()]]
+            right_action_items:[["reload", lambda x: app.update_member_names()]]
+
+            md_bg_color:"#ecfcf0"
+            specific_text_color:"#757575"
+            elevation:0
+
+        MDSeparator:
+        MDBoxLayout:
+            MDScrollView:
+                MDList:
+                    id: add_fee_list
+
+<SwitchItem>:
+    padding: dp(20)
+    text: root.text
+    on_release: root.on_release
+    MDSwitch:
+        id: switch
+        pos_hint: {'center_y': 0.35, 'right': 0.9}
+        on_active: root.on_switch_active(switch.active)
+        icon_active:"check"
+        thumb_color_active:"white"
+        thumb_color_inactive:"#606758"
+        track_color_inactive:"#D7DECD"
+

@@ -1,0 +1,123 @@
+<Detail_Screen@Screen>:
+    id: detail_screen
+    name: 'detail_screen'
+    MDScreen:
+        MDBoxLayout:
+            orientation:"vertical"
+            padding:dp(10)
+            canvas.before:
+                Color:
+                    rgba: 236/255,252/255,240/255,1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            MDTopAppBar:
+                anchor_title:"left"
+                title:"Details"
+                left_action_items:[["arrow-left", lambda x: app.main_menu()]]
+                right_action_items:[["reload", lambda x: app.refresh_data()]]
+                md_bg_color:"#ecfcf0"
+                specific_text_color:"#757575"
+                elevation:0
+
+            MDBoxLayout:
+                size_hint_y:.3
+                spacing:dp(20)
+                radius:dp(10)
+                MDBoxLayout:
+                    orientation: "vertical"
+                    padding: dp(20)
+                    spacing: dp(20)
+
+                    MDBoxLayout:
+                        orientation: "horizontal"
+                        MDLabel:
+                            text: "Month-Year :"
+                            font_style: "Body1"
+                            halign: "left"
+                            theme_text_color: "Secondary"
+                        MDLabel:
+                            id: amount_label
+                            text: app.current_date
+                            font_style: "Body1"
+                            halign: "right"
+                            theme_text_color: "Secondary"
+
+                    MDBoxLayout:
+                        orientation: "horizontal"
+                        MDLabel:
+                            text: "Expenses :"
+                            font_style: "Body1"
+                            halign: "left"
+                            theme_text_color: "Secondary"
+                        MDLabel:
+                            text: app.expanse_amount
+                            font_style: "Body1"
+                            halign: "right"
+                            theme_text_color: "Secondary"
+
+                    MDBoxLayout:
+                        orientation: "horizontal"
+                        MDLabel:
+                            text: "Remaining :"
+                            font_style: "Body1"
+                            halign: "left"
+                            theme_text_color: "Secondary"
+                        MDLabel:
+                            text: app.remain_amount
+                            font_style: "Body1"
+                            halign: "right"
+                            theme_text_color: "Secondary"
+
+                    MDBoxLayout:
+                        orientation: "horizontal"
+                        MDLabel:
+                            text: "Total Amount :"
+                            font_style: "Body1"
+                            halign: "left"
+                            theme_text_color: "Secondary"
+                        MDLabel:
+                            text: app.current_amount
+                            font_style: "Body1"
+                            halign: "right"
+                            theme_text_color: "Secondary"
+                    MDSeparator:
+                    MDBoxLayout:
+                        orientation: "horizontal"
+                        MDLabel:
+                            text: "Members :"
+                            font_style: "Body1"
+                            halign: "left"
+                            theme_text_color: "Secondary"
+                        MDLabel:
+                            text: app.totalmembers
+                            font_style: "Body1"
+                            halign: "right"
+                            theme_text_color: "Secondary"
+
+            MDBoxLayout:
+                MDScrollView:
+                    MDList:
+                        OneLineAvatarIconListItem:
+                            text:"Add New Member"
+                            on_release: app.add_new_student()
+                            IconLeftWidget:
+                                icon:"plus-circle-outline"
+                        OneLineAvatarIconListItem:
+                            text:"Edit Fees"
+                            on_release: app.feeandfine()
+                            IconLeftWidget:
+                                icon:"hand-coin-outline"
+                        OneLineAvatarIconListItem:
+                            text:"Fee and Fine Detail"
+                            on_release: app.feeandfineinfo()
+                            IconLeftWidget:
+                                icon:"information-outline"
+
+<DetailsCard@MDCard>:
+    md_bg_color:  "#ecfcf0"      
+    orientation: "vertical"
+    ripple_behavior: True
+    radius: dp(25)
+    orientation: "vertical"

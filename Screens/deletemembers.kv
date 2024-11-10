@@ -1,0 +1,45 @@
+<DeleteMember@Screen>:
+    id: delete_member
+    name: 'delete_member'
+    MDBoxLayout:
+        orientation:"vertical"
+        canvas.before:
+            Color:
+                rgba: 236/255,252/255,240/255,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        MDTopAppBar:
+            anchor_title:"left"
+            title:"Edit"
+            left_action_items:[["arrow-left", lambda x: app.main_menu()]]
+            right_action_items: [["delete", lambda x: app.enable_delete_mode()]]
+            md_bg_color:"#ecfcf0"
+            specific_text_color:"#757575"
+            elevation:0
+
+        MDSeparator:
+        ScrollView:
+            MDList:
+                id: add_fee_list
+        
+        MDBoxLayout:
+            adaptive_height: True
+            spacing: dp(10)
+            padding: dp(10)
+
+        BoxLayout:
+            size_hint_y: None
+            height: dp(56)
+            orientation: 'vertical'
+            padding: dp(10)
+            MDFillRoundFlatButton:
+                padding: dp(5)
+                pos_hint: {"center_x": 0.5}
+                text: "Delete"
+                md_bg_color: "#1a434e"
+                font_size: "16dp"
+                on_release: app.confirm_deletion()
+                id: confirm_delete_button
+                disabled: True

@@ -1,0 +1,41 @@
+<FeeFine@Screen>:
+    id: fee_fine
+    name: 'fee_fine'
+    MDBoxLayout:
+        orientation:"vertical"
+        canvas.before:
+            Color:
+                rgba: 236/255,252/255,240/255,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        MDTopAppBar:
+            anchor_title:"left"
+            title:"Edit"
+            left_action_items:[["arrow-left", lambda x: app.main_menu()]]
+            right_action_items:[["information-outline", lambda x: x ]]
+            md_bg_color:"#ecfcf0"
+            specific_text_color:"#757575"
+            elevation:0
+
+        MDSeparator:
+        MDBoxLayout:
+            MDScrollView:
+                MDList:
+                    OneLineAvatarIconListItem:
+                        text:"Add Fee"
+                        on_release: app.addfees()
+                        IconLeftWidget:
+                            icon:"plus-circle-outline"
+                    OneLineAvatarIconListItem:
+                        text:"Add Fine"
+                        on_release: app.fineediting()
+                        IconLeftWidget:
+                            icon:"hand-coin-outline"
+                    OneLineAvatarIconListItem:
+                        text:"Add Fund"
+                        on_release: app.fineediting()
+                        IconLeftWidget:
+                            icon:"hand-coin-outline"
+
